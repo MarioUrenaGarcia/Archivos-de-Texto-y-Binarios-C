@@ -6,4 +6,4 @@
 sandbox.c
 *.pub
 *key
-.bin
+*.bin

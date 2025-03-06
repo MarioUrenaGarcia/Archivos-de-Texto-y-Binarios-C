@@ -1,7 +1,6 @@
 #include "defArchivos.h"
 
 // Funciones ----------------------------------------------------------------------------
-
 /**
  *
  * @brief
@@ -102,7 +101,7 @@ extern void crearArchivoTexto()
     return;
 }
 // Leer Archivo de Texto
-void leerArchivoTexto()
+extern void leerArchivoTexto()
 {
     FILE *archivo;
     char nombreArchivo[50];
@@ -180,7 +179,7 @@ void leerArchivoTexto()
     return;
 }
 // Append Archivo de Texto
-void appendArchivoTexto()
+extern void appendArchivoTexto()
 {
     FILE *archivo;
     char nombreArchivo[50];
@@ -217,7 +216,7 @@ void appendArchivoTexto()
 
 // Funciones de Archivos Binarios -------------------------------------------------------
 // Crear Archivo Binario
-void crearArchivoBinario()
+extern void crearArchivoBinario()
 {
     FILE *archivo;
     char nombreArchivo[50];
@@ -252,7 +251,7 @@ void crearArchivoBinario()
     return;
 }
 // Leer Archivo Binario
-void leerArchivoBinario()
+extern void leerArchivoBinario()
 {
     FILE *archivo;
     char nombreArchivo[50];
@@ -292,7 +291,7 @@ void leerArchivoBinario()
     return;
 }
 // Append Archivo Binario
-void modificarArchivoBinario()
+extern void modificarArchivoBinario()
 {
     FILE *archivo;
     char nombreArchivo[50];
@@ -324,6 +323,113 @@ void modificarArchivoBinario()
         printf("\n\tPresione" YELLOW " ENTER " RESET "para continuar\n");
         getchar();
         getchar();
+    }
+    return;
+}
+
+// Funciones de Operaciones entre Archivos de Texto y Binarios ---------------------------
+// Convertir de Archivo de Texto a Archivo Binario
+extern void convertirTextoBinario()
+{
+    FILE *archivoTexto;
+    FILE *archivoBinario;
+    char nombreArchivoTexto[50];
+    char nombreArchivoBinario[50];
+    char textoChar;
+
+    printf("\n\n\tConvertir de Archivo de Texto a Archivo Binario\n\n");
+
+    printf("\tIngrese el nombre del archivo de texto: ");
+    scanf(" %[^\n]", nombreArchivoTexto);
+    strcat(nombreArchivoTexto, ".txt");
+
+    archivoTexto = fopen(nombreArchivoTexto, "r");
+    if (archivoTexto == NULL)
+    {
+        printf("\n\tError al abrir el archivo de texto\n");
+        exit(1);
+    }
+    else
+    {
+        printf("\tIngrese el nombre del archivo binario: ");
+        scanf(" %[^\n]", nombreArchivoBinario);
+        strcat(nombreArchivoBinario, ".bin");
+
+        archivoBinario = fopen(nombreArchivoBinario, "wb");
+        if (archivoBinario == NULL)
+        {
+            printf("\n\tError al crear el archivo binario\n");
+            exit(1);
+        }
+        else
+        {
+            while (fscanf(archivoTexto, "%c", &textoChar) == 1)
+            {
+                fwrite(&textoChar, sizeof(char), 1, archivoBinario);
+            }
+            fclose(archivoTexto);
+            fclose(archivoBinario);
+
+            system("clear");
+            printf("\n\tArchivo convertido " GREEN "exitosamente\n" RESET);
+
+            printf("\n\tPresione" YELLOW " ENTER " RESET "para continuar\n");
+            getchar();
+            getchar();
+        }
+    }
+    return;
+}
+// Convertir de Archivo Binario a Archivo de Texto
+extern void convertirBinarioTexto()
+{
+    FILE *archivoTexto;
+    FILE *archivoBinario;
+    char nombreArchivoTexto[50];
+    char nombreArchivoBinario[50];
+    char textoChar;
+
+    printf("\n\n\tConvertir de Archivo Binario a Archivo de Texto\n\n");
+
+    printf("\tIngrese el nombre del archivo binario: ");
+    scanf(" %[^\n]", nombreArchivoBinario);
+    strcat(nombreArchivoBinario, ".bin");
+
+    archivoBinario = fopen(nombreArchivoBinario, "rb");
+    if (archivoBinario == NULL)
+    {
+        printf("\n\tError al abrir el archivo binario\n");
+        exit(1);
+    }
+    else
+    {
+        printf("\tIngrese el nombre del archivo de texto: ");
+        scanf(" %[^\n]", nombreArchivoTexto);
+        strcat(nombreArchivoTexto, ".txt");
+
+        archivoTexto = fopen(nombreArchivoTexto, "w");
+        if (archivoTexto == NULL)
+        {
+            printf("\n\tError al crear el archivo de texto\n");
+            fclose(archivoTexto);
+            exit(1);
+        }
+        else
+        {
+            while (fread(&textoChar, sizeof(char), 1, archivoBinario) == 1)
+            {
+                fprintf(archivoTexto, "%c", textoChar);
+            }
+            fclose(archivoTexto);
+            fclose(archivoBinario);
+
+            system("clear");
+            printf("\n\tArchivo convertido " GREEN "exitosamente\n" RESET);
+
+            printf("\n\tPresione" YELLOW " ENTER " RESET "para continuar\n");
+            getchar();
+            getchar();
+        }
     }
     return;
 }

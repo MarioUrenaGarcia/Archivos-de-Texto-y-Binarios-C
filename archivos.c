@@ -26,6 +26,7 @@
 int menuPrincipal();
 int menuArchivosTexto();
 int menuArchivosBinarios();
+int menuOperacionesArchivos();
 
 void crearArchivoTexto();
 void leerArchivoTexto();
@@ -34,6 +35,9 @@ void appendArchivoTexto();
 void crearArchivoBinario();
 void leerArchivoBinario();
 void modificarArchivoBinario();
+
+void convertirTextoBinario();
+void convertirBinarioTexto();
 // Main ---------------------------------------------------------------------------------
 
 int main(int argc, char *argv[])
@@ -129,6 +133,35 @@ int main(int argc, char *argv[])
       break;
     case 3:
       system("clear");
+      // Operaciones entre archivos de texto y binarios
+      do
+      {
+        opcionSubMenu = menuOperacionesArchivos();
+        switch (opcionSubMenu)
+        {
+        case 1:
+          system("clear");
+          // Convertir de Archivo de Texto a Archivo Binario
+          convertirTextoBinario();
+          system("clear");
+          break;
+        case 2:
+          system("clear");
+          // Convertir de Archivo Binario a Archivo de Texto
+          convertirBinarioTexto();
+          system("clear");
+          break;
+        case 3:
+          system("clear");
+          // Salir del menú de operaciones entre archivos de texto y binarios
+          break;
+        default:
+          system("clear");
+          printf(RED "\n\n\tOpción no válida\n\n" RESET);
+          break;
+        }
+      } while (opcionSubMenu != 3);
+
       break;
     case 4:
       system("clear");
@@ -141,19 +174,6 @@ int main(int argc, char *argv[])
     }
   } while (opcionPrincipal != 4);
   // FINALIZACIÓN DEL PROGRAMA
-  printf("\n\n\tPrograma Finalizado con ÉXITO\n\n");
+  printf("\n\n\tPrograma Finalizado con " GREEN "ÉXITO\n\n" RESET);
   return 0;
 }
-
-// Funciones ----------------------------------------------------------------------------
-
-/**
- *
- * @brief
- * @date
- * @author
- * @param
- * @return
- * @Ejemplo
- *
- */
