@@ -6,4 +6,6 @@ funArchivos.o: funArchivos.c defArchivos.h
 	gcc -c funArchivos.c
 archivos.o: archivos.c defArchivos.h
 	gcc -c archivos.c
+clean:
+	rm *.o *.txt *.bin
 
