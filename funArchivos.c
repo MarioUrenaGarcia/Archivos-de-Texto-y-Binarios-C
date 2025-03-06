@@ -11,6 +11,7 @@
  * @Ejemplo
  *
  */
+
 // MENÚS ----------------------------------------------------------------------------------
 //  Menú Principal
 extern int menuPrincipal()
@@ -75,6 +76,7 @@ extern int menuExtras()
     scanf("%d", &opcion);
     return opcion;
 }
+
 // Funciones de Archivos de Texto -------------------------------------------------------
 // Crear Archivo de Texto
 extern void crearArchivoTexto()
