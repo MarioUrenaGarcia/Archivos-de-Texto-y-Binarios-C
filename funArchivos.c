@@ -169,9 +169,157 @@ void leerArchivoTexto()
                 printf("%s", texto);
             }
         }
-        printf("\n");
+        printf(CYAN "/fin\n" RESET);
 
         fclose(archivo);
+
+        printf("\n\tPresione" YELLOW " ENTER " RESET "para continuar\n");
+        getchar();
+        getchar();
+    }
+    return;
+}
+// Append Archivo de Texto
+void appendArchivoTexto()
+{
+    FILE *archivo;
+    char nombreArchivo[50];
+    char texto[1000];
+
+    printf("\n\n\tModificar Archivo de Texto\n\n");
+
+    printf("\tIngrese el nombre del archivo: ");
+    scanf(" %[^\n]", nombreArchivo);
+    strcat(nombreArchivo, ".txt");
+
+    archivo = fopen(nombreArchivo, "a");
+    if (archivo == NULL)
+    {
+        printf("\n\tError al abrir el archivo\n");
+        exit(1);
+    }
+    else
+    {
+        printf("\n\tIngrese el texto a guardar en el archivo: ");
+        scanf(" %[^\n]", texto);
+        fprintf(archivo, " %s", texto);
+        fclose(archivo);
+
+        system("clear");
+        printf("\n\tArchivo modificado " GREEN "exitosamente\n" RESET);
+
+        printf("\n\tPresione" YELLOW " ENTER " RESET "para continuar\n");
+        getchar();
+        getchar();
+    }
+    return;
+}
+
+// Funciones de Archivos Binarios -------------------------------------------------------
+// Crear Archivo Binario
+void crearArchivoBinario()
+{
+    FILE *archivo;
+    char nombreArchivo[50];
+    char texto[1000];
+
+    printf("\n\n\tCrear Archivo Binario\n\n");
+
+    printf("\tIngrese el nombre del archivo: ");
+    scanf(" %[^\n]", nombreArchivo);
+    strcat(nombreArchivo, ".bin");
+
+    archivo = fopen(nombreArchivo, "wb");
+    if (archivo == NULL)
+    {
+        printf("\n\tError al crear el archivo\n");
+        exit(1);
+    }
+    else
+    {
+        printf("\n\tIngrese el texto a guardar en el archivo: ");
+        scanf(" %[^\n]", texto);
+        fwrite(texto, sizeof(char), strlen(texto), archivo);
+        fclose(archivo);
+
+        system("clear");
+        printf("\n\tArchivo creado " GREEN "exitosamente\n" RESET);
+
+        printf("\n\tPresione" YELLOW " ENTER " RESET "para continuar\n");
+        getchar();
+        getchar();
+    }
+    return;
+}
+// Leer Archivo Binario
+void leerArchivoBinario()
+{
+    FILE *archivo;
+    char nombreArchivo[50];
+    char textoChar;
+
+    printf("\n\n\tLeer Archivo Binario\n\n");
+
+    printf("\tIngrese el nombre del archivo: ");
+    scanf(" %[^\n]", nombreArchivo);
+    strcat(nombreArchivo, ".bin");
+
+    archivo = fopen(nombreArchivo, "rb");
+    if (archivo == NULL)
+    {
+        printf("\n\tError al abrir el archivo\n");
+        exit(1);
+    }
+    else
+    {
+        // Opcion alternativa usando fread(texto,sizeof(char),1000,archivo)
+        // fread(texto, sizeof(char), 1000, archivo);
+        // printf("\n%s\n", texto);
+
+        printf("\n\tTexto en el archivo: ");
+        while (fread(&textoChar, sizeof(char), 1, archivo) == 1)
+        {
+            printf("%c", textoChar);
+        }
+
+        printf(CYAN "/fin\n" RESET);
+        fclose(archivo);
+
+        printf("\n\tPresione" YELLOW " ENTER " RESET "para continuar\n");
+        getchar();
+        getchar();
+    }
+    return;
+}
+// Append Archivo Binario
+void modificarArchivoBinario()
+{
+    FILE *archivo;
+    char nombreArchivo[50];
+    char texto[1000];
+
+    printf("\n\n\tModificar Archivo Binario\n\n");
+    printf("\tIngrese el nombre del archivo: ");
+    scanf(" %[^\n]", nombreArchivo);
+    strcat(nombreArchivo, ".bin");
+
+    archivo = fopen(nombreArchivo, "ab");
+    if (archivo == NULL)
+    {
+        printf("\n\tError al abrir el archivo\n");
+        exit(1);
+    }
+    else
+    {
+        printf("\n\tIngrese el texto a guardar en el archivo: ");
+        scanf(" %[^\n]", texto);
+        // Primero agregar un espacio al inicio para que la palabra no se pegue al final de la anterior
+        fwrite(" ", sizeof(char), 1, archivo);
+        fwrite(texto, sizeof(char), strlen(texto), archivo);
+        fclose(archivo);
+
+        system("clear");
+        printf("\n\tArchivo modificado " GREEN "exitosamente\n" RESET);
 
         printf("\n\tPresione" YELLOW " ENTER " RESET "para continuar\n");
         getchar();
