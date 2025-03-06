@@ -17,12 +17,12 @@
 extern int menuPrincipal()
 {
     int opcion;
-    printf("\n\n\tMenú Principal\n\n");
-    printf("\t1) Archivos de Texto\n");
-    printf("\t2) Archivos Binarios\n");
-    printf("\t3) Operaciones entre Archivos de Texto y Binarios\n");
-    printf("\t4) Extras\n");
-    printf("\t5) Salir\n");
+    printf(YELLOW "\n\n\tMenú Principal\n\n" RESET);
+    printf("\t" RED "1)" RESET " Archivos de Texto\n");
+    printf("\t" RED "2)" RESET " Archivos Binarios\n");
+    printf("\t" RED "3)" RESET " Operaciones entre Archivos de Texto y Binarios\n");
+    printf("\t" RED "4)" RESET " Extras\n");
+    printf("\t" RED "5)" RESET " Salir\n");
     printf("\n\tSeleccione una opción: ");
     scanf("%d", &opcion);
     return opcion;
@@ -31,11 +31,11 @@ extern int menuPrincipal()
 extern int menuArchivosTexto()
 {
     int opcion;
-    printf("\n\n\tMenú de Archivos de Texto\n\n");
-    printf("\t1) Crear Archivo de Texto\n");
-    printf("\t2) Leer Archivo de Texto\n");
-    printf("\t3) Modificar Archivo de Texto\n");
-    printf("\t4) Regresar al Menú Principal\n");
+    printf(YELLOW "\n\n\tMenú de Archivos de Texto\n\n" RESET);
+    printf("\t" RED "1)" RESET " Crear Archivo de Texto\n");
+    printf("\t" RED "2)" RESET " Leer Archivo de Texto\n");
+    printf("\t" RED "3)" RESET " Modificar Archivo de Texto\n");
+    printf("\t" RED "4)" RESET " Regresar al Menú Principal\n");
     printf("\n\tSeleccione una opción: ");
     scanf("%d", &opcion);
     return opcion;
@@ -44,11 +44,11 @@ extern int menuArchivosTexto()
 extern int menuArchivosBinarios()
 {
     int opcion;
-    printf("\n\n\tMenú de Archivos Binarios\n\n");
-    printf("\t1) Crear Archivo Binario\n");
-    printf("\t2) Leer Archivo Binario\n");
-    printf("\t3) Modificar Archivo Binario\n");
-    printf("\t4) Regresar al Menú Principal\n");
+    printf(YELLOW "\n\n\tMenú de Archivos Binarios\n\n" RESET);
+    printf("\t" RED "1)" RESET " Crear Archivo Binario\n");
+    printf("\t" RED "2)" RESET " Leer Archivo Binario\n");
+    printf("\t" RED "3)" RESET " Modificar Archivo Binario\n");
+    printf("\t" RED "4)" RESET " Regresar al Menú Principal\n");
     printf("\n\tSeleccione una opción: ");
     scanf("%d", &opcion);
     return opcion;
@@ -57,10 +57,10 @@ extern int menuArchivosBinarios()
 extern int menuOperacionesArchivos()
 {
     int opcion;
-    printf("\n\n\tMenú de Operaciones entre Archivos de Texto y Binarios\n\n");
-    printf("\t1) Convertir de Archivo de Texto a Archivo Binario\n");
-    printf("\t2) Convertir de Archivo Binario a Archivo de Texto\n");
-    printf("\t3) Regresar al Menú Principal\n");
+    printf(YELLOW "\n\n\tMenú de Operaciones entre Archivos de Texto y Binarios\n\n" RESET);
+    printf("\t" RED "1)" RESET " Convertir de Archivo de Texto a Archivo Binario\n");
+    printf("\t" RED "2)" RESET " Convertir de Archivo Binario a Archivo de Texto\n");
+    printf("\t" RED "3)" RESET " Regresar al Menú Principal\n");
     printf("\n\tSeleccione una opción: ");
     scanf("%d", &opcion);
     return opcion;
@@ -69,9 +69,9 @@ extern int menuOperacionesArchivos()
 extern int menuExtras()
 {
     int opcion;
-    printf("\n\n\tMenú de Extras\n\n");
-    printf("\t1) Eliminar todos los archivos .txt y .bin\n");
-    printf("\t2) Regresar al Menú Principal\n");
+    printf(YELLOW "\n\n\tMenú de Extras\n\n" RESET);
+    printf("\t" RED "1)" RESET " Eliminar todos los archivos .txt y .bin\n");
+    printf("\t" RED "2)" RESET " Regresar al Menú Principal\n");
     printf("\n\tSeleccione una opción: ");
     scanf("%d", &opcion);
     return opcion;
