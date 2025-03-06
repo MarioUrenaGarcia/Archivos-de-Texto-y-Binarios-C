@@ -26,6 +26,7 @@
 int menuPrincipal();
 int menuArchivosTexto();
 void crearArchivoTexto();
+void leerArchivoTexto();
 // Main ---------------------------------------------------------------------------------
 
 int main(int argc, char *argv[])
@@ -62,6 +63,7 @@ int main(int argc, char *argv[])
         case 2:
           system("clear");
           // Leer e imprimir en pantalla archivos de texto
+          leerArchivoTexto();
           system("clear");
           break;
         case 3:

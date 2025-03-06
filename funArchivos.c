@@ -101,3 +101,81 @@ extern void crearArchivoTexto()
     }
     return;
 }
+// Leer Archivo de Texto
+void leerArchivoTexto()
+{
+    FILE *archivo;
+    char nombreArchivo[50];
+    char texto[1000];
+    int contadorPalabras = 0;
+    int contadorPalabrasImpresas = 0;
+
+    printf("\n\n\tLeer Archivo de Texto\n\n");
+
+    printf("\tIngrese el nombre del archivo: ");
+    scanf(" %[^\n]", nombreArchivo);
+    strcat(nombreArchivo, ".txt");
+
+    archivo = fopen(nombreArchivo, "r");
+    if (archivo == NULL)
+    {
+        printf("\n\tError al abrir el archivo\n");
+        exit(1);
+    }
+    else
+    {
+        // Opcion alternativa usando feof
+        // while (feof(archivo) == 0)
+        // {
+        //     fscanf(archivo, " %[^\n]", texto);
+        //     printf("\n%s\n", texto);
+        // }
+
+        // Opcion alternativa usando fscanf
+        // while (fscanf(archivo, "%s", texto) == 1)
+        // {
+        //     printf("%s ", texto);
+        // }
+        // printf("\n");
+
+        // Opcion alternativa usando fscanf
+        // while (fscanf(archivo, " %[^\n]", texto) == 1)
+        // {
+        //     printf("%s\n", texto);
+        // }
+
+        // Opcion alternativa contando palabras primero para evitar el ultimo espacio basura
+        while (fscanf(archivo, "%s", texto) == 1)
+        {
+            contadorPalabras++;
+        }
+        fclose(archivo);
+
+        archivo = fopen(nombreArchivo, "r");
+        if (archivo == NULL)
+        {
+            printf("\n\tError al abrir el archivo\n");
+            exit(1);
+        }
+        while (fscanf(archivo, "%s", texto) == 1)
+        {
+            contadorPalabrasImpresas++;
+            if (contadorPalabrasImpresas < contadorPalabras)
+            {
+                printf("%s ", texto);
+            }
+            else
+            {
+                printf("%s", texto);
+            }
+        }
+        printf("\n");
+
+        fclose(archivo);
+
+        printf("\n\tPresione" YELLOW " ENTER " RESET "para continuar\n");
+        getchar();
+        getchar();
+    }
+    return;
+}
