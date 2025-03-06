@@ -14,6 +14,8 @@
  *          C) Operaciones entre Archivos de Texto y Binarios:
  *             - Convertir de Archivo de Texto a Binario
  *             - Convertir de Archivo Binario a Archivo de Texto
+ *          D) Extras
+ *             - Eliminar archivos
  * @date
  * @author Mario Ureña García
  *
@@ -27,6 +29,7 @@ int menuPrincipal();
 int menuArchivosTexto();
 int menuArchivosBinarios();
 int menuOperacionesArchivos();
+int menuExtras();
 
 void crearArchivoTexto();
 void leerArchivoTexto();
@@ -38,6 +41,8 @@ void modificarArchivoBinario();
 
 void convertirTextoBinario();
 void convertirBinarioTexto();
+
+void eliminarArchivos();
 // Main ---------------------------------------------------------------------------------
 
 int main(int argc, char *argv[])
@@ -165,6 +170,32 @@ int main(int argc, char *argv[])
       break;
     case 4:
       system("clear");
+      // Abrir menú de EXTRAS
+      do
+      {
+        opcionSubMenu = menuExtras();
+        switch (opcionSubMenu)
+        {
+        case 1:
+          system("clear");
+          // Eliminar archivos
+          eliminarArchivos();
+          system("clear");
+          break;
+        case 2:
+          system("clear");
+          // Salir del menú de extras
+          break;
+        default:
+          system("clear");
+          printf(RED "\n\n\tOpción no válida\n\n" RESET);
+          break;
+        }
+      } while (opcionSubMenu != 2);
+
+      break;
+    case 5:
+      system("clear");
       printf("\n\n\tSaliendo del Programa\n\n");
       break;
     default:
@@ -172,7 +203,7 @@ int main(int argc, char *argv[])
       printf(RED "\n\n\tOpción no válida\n\n" RESET);
       break;
     }
-  } while (opcionPrincipal != 4);
+  } while (opcionPrincipal != 5);
   // FINALIZACIÓN DEL PROGRAMA
   printf("\n\n\tPrograma Finalizado con " GREEN "ÉXITO\n\n" RESET);
   return 0;

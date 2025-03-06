@@ -20,7 +20,8 @@ extern int menuPrincipal()
     printf("\t1) Archivos de Texto\n");
     printf("\t2) Archivos Binarios\n");
     printf("\t3) Operaciones entre Archivos de Texto y Binarios\n");
-    printf("\t4) Salir\n");
+    printf("\t4) Extras\n");
+    printf("\t5) Salir\n");
     printf("\n\tSeleccione una opción: ");
     scanf("%d", &opcion);
     return opcion;
@@ -63,7 +64,17 @@ extern int menuOperacionesArchivos()
     scanf("%d", &opcion);
     return opcion;
 }
-
+// Menú de Extras
+extern int menuExtras()
+{
+    int opcion;
+    printf("\n\n\tMenú de Extras\n\n");
+    printf("\t1) Eliminar todos los archivos .txt y .bin\n");
+    printf("\t2) Regresar al Menú Principal\n");
+    printf("\n\tSeleccione una opción: ");
+    scanf("%d", &opcion);
+    return opcion;
+}
 // Funciones de Archivos de Texto -------------------------------------------------------
 // Crear Archivo de Texto
 extern void crearArchivoTexto()
@@ -431,5 +442,30 @@ extern void convertirBinarioTexto()
             getchar();
         }
     }
+    return;
+}
+
+// Funciones de Extras ------------------------------------------------------------------
+// Eliminar Archivo
+extern void eliminarArchivos()
+{
+    printf("\n\n\tEliminar Archivos\n\n");
+    printf("\tEsta acción eliminará todos los archivos .txt y .bin\n");
+    printf("\t¿Desea continuar? (s/n): ");
+    char opcion;
+    scanf(" %c", &opcion);
+    if (opcion == 's')
+    {
+        system("rm *.txt");
+        system("rm *.bin");
+        printf("\n\tArchivos eliminados " GREEN "exitosamente\n" RESET);
+    }
+    else
+    {
+        printf("\n\tArchivos no eliminados\n");
+    }
+    printf("\n\tPresione" YELLOW " ENTER " RESET "para continuar\n");
+    getchar();
+    getchar();
     return;
 }
